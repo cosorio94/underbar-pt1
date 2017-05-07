@@ -17,5 +17,25 @@ describe('every()', () => {
       expect(_.every(nums, num => num % 2 === 1)).toBe(false);
     });
 
+    it('returns true if all numbers contained in an object are even and we test for even numbers', () => {
+      const obj = {
+        Barcelona: 2,
+        Madrid: 8,
+        PSG: 6,
+        Junior: 20
+      };
+      expect(_.every(obj, num => num % 2 === 0)).toBe(true);
+    });
+
+    it('returns false if all numbers contained in an object are odd and we test for even numbers', () => {
+      const obj = {
+        Barcelona: 2,
+        Madrid: 8,
+        PSG: 6,
+        Junior: 21
+      };
+      expect(_.every(obj, num => num % 2 === 0)).toBe(false);
+    })
+
   });
 });

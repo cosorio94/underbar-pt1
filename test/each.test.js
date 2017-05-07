@@ -39,5 +39,24 @@ describe('each()', () => {
     });
     expect(count).toBe(3);
   });
+
+  it('iterates every property of an object, passing the array, the corresponding key, and the entire object to the callback. Then does the same for the array properties', () => {
+    const obj = {
+      names: ['Carlos', 'Pablo', 'Andres', 'Roberto'],
+      ages: ['23', '22', '43', '23'],
+      occupations: ['physics', 'student', 'bishop', 'crazy']
+    };
+    let keyCount = 0;
+    let arrayValueCount = 0;
+    _.each(obj, function (arr, key, iteratedObj) {
+      _.each(arr, function(value, index, array) {
+        expect(value).toEqual(iteratedObj[key][index]);
+        arrayValueCount += 1;
+      });
+      keyCount++;
+    });
+    expect(keyCount).toBe(3);
+    expect(arrayValueCount).toBe(12);
+  });
 });
 

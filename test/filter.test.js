@@ -23,4 +23,23 @@ describe('filter()', () => {
     const abilityScores = _.filter(characterAttributes, (value) => !isNaN(value));
     expect(abilityScores).toEqual([4, 7, 10, 16, 5, 4]);
   });
+
+  it('filters an object to only non-numeric values', () => {
+    const characterAttributes = {
+      name: 'Thokul Mongothsbeard',
+      honorific: 'Lord Thokul Mongothsbeard the Arcane',
+      race: 'human',
+      class: 'druid',
+      strength: 4,
+      constitution: 7,
+      dexterity: 10,
+      intelligence: 16,
+      wisdom: 5,
+      charisma: 4
+    };
+
+    const abilityScores = _.filter(characterAttributes, (value) => isNaN(value));
+    expect(abilityScores).toEqual(['Thokul Mongothsbeard', 'Lord Thokul Mongothsbeard the Arcane', 'human', 'druid']);
+    expect(abilityScores[2]).toEqual('human');
+  });
 });

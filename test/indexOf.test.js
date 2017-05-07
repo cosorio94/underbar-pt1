@@ -26,4 +26,15 @@ describe('indexOf()', () => {
     expect(_.indexOf(arr, 'bar', 2)).toBe(3);
   });
 
+  it('returns the first matching key of an array-like object', () => {
+    const arrayLikeObj = {
+      length: 4,
+      0: 'hola',
+      1: 'no',
+      2: 342,
+      3: 'bruh'
+    };
+    expect(_.indexOf(arrayLikeObj, 342)).toBe(2);
+  })
+
 });
