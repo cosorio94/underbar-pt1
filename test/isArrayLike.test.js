@@ -18,4 +18,9 @@ describe('isArrayLike()', () => {
     };
     expect(_.isArrayLike(nonArrayLikeObj)).toBe(false);
   });
+
+  it('returns true for an array of arrays', () => {
+    const arr = [[1,23],[12,43,5],'lol']
+    expect(_.isArrayLike(arr)).toBe(true);
+  })
 });
