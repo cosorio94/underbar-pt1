@@ -18,4 +18,17 @@ describe('reject()', () => {
     const orderItems = _.reject(order, (value) => value === null);
     expect(orderItems).toEqual(['burger', 'ketchup', 'cookie']);
   });
+
+  it('rejects odd numbers from an object', () => {
+    const nums = {
+      0: 2,
+      1: 32,
+      3: 3,
+      4: 9,
+      5: 10
+    };
+
+    const oddNums = _.reject(nums, value => value % 2 === 1);
+    expect(oddNums).toEqual([2, 32, 10]);
+  });
 });
